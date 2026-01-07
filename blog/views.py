@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
+from django.template.response import TemplateResponse
 from django.utils import timezone
 
 from .models import Post, Category
@@ -17,12 +18,10 @@ def index(request):
         .order_by('-pub_date')
     )
 
-
-    return render(
+    return TemplateResponse(
         request,
         'blog/index.html',
         {
-            'title': 'Главная страница',
             'posts': posts,
         }
     )
@@ -38,20 +37,20 @@ def post_detail(request, post_id):
         location__is_published=True,
     )
 
-
-    return render(
+    return TemplateResponse(
         request,
         'blog/post_detail.html',
-        {'post': post}
+        {
+            'post': post,
+        }
     )
-
 
 
 def category_posts(request, slug):
     category = get_object_or_404(
         Category,
         slug=slug,
-        is_published=True
+        is_published=True,
     )
 
     posts = (
@@ -66,8 +65,7 @@ def category_posts(request, slug):
         .order_by('-pub_date')
     )
 
-
-    return render(
+    return TemplateResponse(
         request,
         'blog/category.html',
         {
@@ -75,4 +73,3 @@ def category_posts(request, slug):
             'posts': posts,
         }
     )
-
