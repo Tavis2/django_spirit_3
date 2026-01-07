@@ -1,0 +1,12 @@
+<article>
+  <h1>{{ post.title }}</h1>
+
+  {% if post.location %}
+    <p>{{ post.location }}</p>
+  {% else %}
+    <p>Планета Земля</p>
+  {% endif %}
+
+  <p>{{ post.pub_date }}</p>
+  <p>{{ post.text }}</p>
+</article>

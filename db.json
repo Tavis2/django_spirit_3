@@ -1,0 +1,98 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "username": "admin",
+      "password": "pbkdf2_sha256$600000$test$testhash",
+      "is_superuser": true,
+      "is_staff": true,
+      "is_active": true
+    }
+  },
+
+  {
+    "model": "blog.category",
+    "pk": 1,
+    "fields": {
+      "title": "Путешествия",
+      "description": "Заметки о поездках",
+      "slug": "travel",
+      "is_published": true,
+      "created_at": "2023-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "blog.category",
+    "pk": 2,
+    "fields": {
+      "title": "Черновики",
+      "description": "Скрытая категория",
+      "slug": "drafts",
+      "is_published": false,
+      "created_at": "2023-01-01T10:00:00Z"
+    }
+  },
+
+  {
+    "model": "blog.location",
+    "pk": 1,
+    "fields": {
+      "name": "Москва",
+      "is_published": true,
+      "created_at": "2023-01-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "blog.location",
+    "pk": 2,
+    "fields": {
+      "name": "Марс",
+      "is_published": false,
+      "created_at": "2023-01-01T10:00:00Z"
+    }
+  },
+
+  {
+    "model": "blog.post",
+    "pk": 1,
+    "fields": {
+      "title": "Первый пост",
+      "text": "Текст первого поста",
+      "pub_date": "2023-01-02T10:00:00Z",
+      "author": 1,
+      "location": 1,
+      "category": 1,
+      "is_published": true,
+      "created_at": "2023-01-02T10:00:00Z"
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 2,
+    "fields": {
+      "title": "Будущий пост",
+      "text": "Этот пост из будущего",
+      "pub_date": "2099-01-01T10:00:00Z",
+      "author": 1,
+      "location": null,
+      "category": 1,
+      "is_published": true,
+      "created_at": "2023-01-02T10:00:00Z"
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 3,
+    "fields": {
+      "title": "Скрытый пост",
+      "text": "Этот пост скрыт",
+      "pub_date": "2023-01-02T10:00:00Z",
+      "author": 1,
+      "location": null,
+      "category": 2,
+      "is_published": true,
+      "created_at": "2023-01-02T10:00:00Z"
+    }
+  }
+]
