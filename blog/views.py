@@ -12,9 +12,11 @@ def index(request):
             is_published=True,
             pub_date__lte=timezone.now(),
             category__is_published=True,
+            location__is_published=True,
         )
-        .order_by('-pub_date')[:5]
+        .order_by('-pub_date')
     )
+
 
     return render(
         request,
@@ -33,16 +35,16 @@ def post_detail(request, post_id):
         is_published=True,
         pub_date__lte=timezone.now(),
         category__is_published=True,
+        location__is_published=True,
     )
+
 
     return render(
         request,
         'blog/post_detail.html',
-        {
-            'title': post.title,
-            'post': post,
-        }
+        {'post': post}
     )
+
 
 
 def category_posts(request, slug):
@@ -59,15 +61,18 @@ def category_posts(request, slug):
             category=category,
             is_published=True,
             pub_date__lte=timezone.now(),
+            location__is_published=True,
         )
+        .order_by('-pub_date')
     )
+
 
     return render(
         request,
         'blog/category.html',
         {
-            'title': f'Публикации в категории — {category.title}',
             'category': category,
             'posts': posts,
         }
     )
+
